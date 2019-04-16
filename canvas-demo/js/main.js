@@ -1,10 +1,5 @@
-var div = document.getElementById('canvas');
-div.onmousedown = function(down){
-    var x = down.clientX;
-    var y = down.clientY;
-    var divA = document.createElement('div');
-    divA.className = 'divA';
-    divA.style = 'width:6px;height:6px;'+'background:red;border-radius:3px;'+'position:absolute;left:'+(x-3)+' px;'+'right:'+(y-3) +'px;';
-    
-    div.appendChild(divA)
-}
+var yyy = document.getElementById('xxx');
+var context = yyy.getContext('2d');
+
+context.fillstyle = 'red';
+context.fillRect(0,0,100,100);
