@@ -7,27 +7,35 @@ window.onresize = function(){
     resize()
 }
 
+var using = false;
+
 var mouse = false;
 var lastPoint = {'x':undefined, 'y':undefined}
 
 canvas.onmousedown = function(aaa){
-    mouse = true;
+    
     var x = aaa.clientX;
     var y = aaa.clientY;
-    lastPoint = {'x':x, 'y':y}
+    if(eraserEnabled){
+        using = true
+        content.clearRect(x-5,x-5,10,10)
+    }else{
+        mouse = true;
+        lastPoint = {'x':x, 'y':y}
+    }
 
 }
 canvas.onmousemove = function(aaa){
-    if (mouse){
-        var x = aaa.clientX;
-        var y = aaa.clientY;
+    var x = aaa.clientX;
+    var y = aaa.clientY;
+    if(eraserEnabled){
+        content.clearRect(x-5,x-5,10,10)
+    }else if(mouse){
         drawCircle(x,y,0.2);
         var newPoint = {'x':undefined, 'y':undefined}
         newPoint = {'x':x, 'y':y}
         drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
         lastPoint = newPoint;
-
-
     }
 }
 canvas.onmouseup = function(aaa){
@@ -56,3 +64,12 @@ function resize(){
     canvas.width = pageWidth
     canvas.height = pageHeight
 }
+
+var eraserEnabled = false;
+
+eraserEnabled.onclick = function(){
+    eraserEnabled = !eraserEnabled
+    console.log(eraserEnabled)
+
+}
+console.log(eraserEnabled)
