@@ -1,4 +1,4 @@
-#canvas{display: block;background:white}
+#canvas{display: block;background:white;position:fixed;left:0px;right:0px;}
 body{margin:0px;}
 .actions{position:fixed;top:0;left:0;}
 .actions > svg{width:3em;height:3em;margin:10px 15px;transition:all 0.6s;}
