@@ -18,7 +18,7 @@ canvas.onmousedown = function(aaa){
     var y = aaa.clientY;
     if(eraserEnabled){
         using = true
-        content.clearRect(x-5,x-5,10,10)
+        content.clearRect(x-5,y-5,10,10)
     }else{
         mouse = true;
         lastPoint = {'x':x, 'y':y}
@@ -28,10 +28,9 @@ canvas.onmousedown = function(aaa){
 canvas.onmousemove = function(aaa){
     var x = aaa.clientX;
     var y = aaa.clientY;
-    if(eraserEnabled){
-        content.clearRect(x-5,x-5,10,10)
+    if(using){
+        content.clearRect(x-5,y-5,10,10)
     }else if(mouse){
-        drawCircle(x,y,0.2);
         var newPoint = {'x':undefined, 'y':undefined}
         newPoint = {'x':x, 'y':y}
         drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
@@ -40,6 +39,7 @@ canvas.onmousemove = function(aaa){
 }
 canvas.onmouseup = function(aaa){
     mouse = false
+    using = false
 }
 function drawLine(x1,y1,x2,y2){
     content.beginPath();
@@ -66,10 +66,11 @@ function resize(){
 }
 
 var eraserEnabled = false;
+var eraser = document.getElementById('eraser')
 
-eraserEnabled.onclick = function(){
+eraser.onclick = function(){
     eraserEnabled = !eraserEnabled
     console.log(eraserEnabled)
+    console.log('111')
 
 }
-console.log(eraserEnabled)
