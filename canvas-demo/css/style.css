@@ -1,7 +1,6 @@
-#canvas{display: block;background:pink}
+#canvas{display: block;background:white}
 body{margin:0px;}
 .actions{position:fixed;top:0;left:0;}
-.actionsx{position:fixed;top:0;left:0;}
-.actions > #brush{display: none;}
-.actionsx > #eraser{display: none;}
-.actionsx > #brush{display: inline-block;}
+.actions > svg{width:3em;height:3em;margin:10px 15px;transition:all 0.6s;}
+.actions > svg.active{width:4em;height:4em;fill:yellow;}
+.icon {width: 1em; height: 1em;vertical-align: -0.15em;fill: currentColor;overflow: hidden;}

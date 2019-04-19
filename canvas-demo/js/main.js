@@ -1,18 +1,20 @@
 var canvas = document.getElementById('canvas');
 var content = canvas.getContext('2d');
-var eraserEnabled = false;
+var eraserEnabled = true;
 
 autuSetCanvasSize(canvas)
 
 listenToUser(canvas)
 
 eraser.onclick = function(){
-    eraserEnabled = !eraserEnabled
-    actions.className = 'actionsx'
+    eraserEnabled = true
+    eraser.classList.add('active')
+    pen.classList.remove('active')
 }
-brush.onclick = function(){
-    eraserEnabled = !eraserEnabled
-    actions.className = 'actions'
+pen.onclick = function(){
+    eraserEnabled = false
+    pen.classList.add('active')
+    eraser.classList.remove('active')
 }
 
 /****************/
@@ -29,7 +31,7 @@ function listenToUser(canvas){
             var y = aaa.touches[0].clientY;
             if(eraserEnabled){
                 using = true
-                content.clearRect(x-5,y-5,10,10)
+                content.clearRect(x-7,y-7,14,14)
             }else{
                 mouse = true;
                 lastPoint = {'x':x, 'y':y}
@@ -38,7 +40,7 @@ function listenToUser(canvas){
                 var x = aaa.touches[0].clientX;
                 var y = aaa.touches[0].clientY;
                 if(using){
-                    content.clearRect(x-5,y-5,10,10)
+                    content.clearRect(x-7,y-7,14,14)
                 }else if(mouse){
                     var newPoint = {'x':undefined, 'y':undefined}
                     newPoint = {'x':x, 'y':y}
@@ -51,7 +53,7 @@ function listenToUser(canvas){
                 using = false
                 }
     }
-    }else if(document.body.onmousedown === undefined){
+    }else{
         canvas.onmousedown = function(aaa){      
             var x = aaa.clientX;
             var y = aaa.clientY;
@@ -86,7 +88,7 @@ function drawLine(x1,y1,x2,y2){
     content.beginPath();
     content.strokeStyle = 'black'
     content.moveTo(x1,y1)
-    content.lineWidth = '5'
+    content.lineWidth = '6'
     content.lineTo(x2,y2)
     content.stroke()
     content.closePath()
