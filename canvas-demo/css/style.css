@@ -1,12 +1,7 @@
-#canvas{
-    display: block;
-    background:pink;
-}
-body{
-    margin:0px;
-}
-button{
-    position:fixed;
-    top:0;
-    left:0;
-}
+#canvas{display: block;background:pink}
+body{margin:0px;}
+.actions{position:fixed;top:0;left:0;}
+.actionsx{position:fixed;top:0;left:0;}
+.actions > #brush{display: none;}
+.actionsx > #eraser{display: none;}
+.actionsx > #brush{display: inline-block;}

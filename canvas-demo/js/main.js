@@ -1,46 +1,58 @@
 var canvas = document.getElementById('canvas');
 var content = canvas.getContext('2d');
+var eraserEnabled = false;
 
+autuSetCanvasSize(canvas)
 
-resize()
-window.onresize = function(){
-    resize()
+listenToUser(canvas)
+
+eraser.onclick = function(){
+    eraserEnabled = !eraserEnabled
+    actions.className = 'actionsx'
+}
+brush.onclick = function(){
+    eraserEnabled = !eraserEnabled
+    actions.className = 'actions'
 }
 
-var using = false;
+/****************/
+function listenToUser(canvas){
 
-var mouse = false;
-var lastPoint = {'x':undefined, 'y':undefined}
+    var using = false;
 
-canvas.onmousedown = function(aaa){
-    
-    var x = aaa.clientX;
-    var y = aaa.clientY;
-    if(eraserEnabled){
-        using = true
-        content.clearRect(x-5,y-5,10,10)
-    }else{
-        mouse = true;
-        lastPoint = {'x':x, 'y':y}
+    var mouse = false;
+    var lastPoint = {'x':undefined, 'y':undefined}
+
+    canvas.onmousedown = function(aaa){
+        
+        var x = aaa.clientX;
+        var y = aaa.clientY;
+        if(eraserEnabled){
+            using = true
+            content.clearRect(x-5,y-5,10,10)
+        }else{
+            mouse = true;
+            lastPoint = {'x':x, 'y':y}
+        }
+
     }
-
-}
-canvas.onmousemove = function(aaa){
-    var x = aaa.clientX;
-    var y = aaa.clientY;
-    if(using){
-        content.clearRect(x-5,y-5,10,10)
-    }else if(mouse){
-        var newPoint = {'x':undefined, 'y':undefined}
-        newPoint = {'x':x, 'y':y}
-        drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
-        lastPoint = newPoint;
+    canvas.onmousemove = function(aaa){
+        var x = aaa.clientX;
+        var y = aaa.clientY;
+        if(using){
+            content.clearRect(x-5,y-5,10,10)
+        }else if(mouse){
+            var newPoint = {'x':undefined, 'y':undefined}
+            newPoint = {'x':x, 'y':y}
+            drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
+            lastPoint = newPoint;
+        }
     }
+    canvas.onmouseup = function(){
+        mouse = false
+        using = false}
 }
-canvas.onmouseup = function(aaa){
-    mouse = false
-    using = false
-}
+
 function drawLine(x1,y1,x2,y2){
     content.beginPath();
     content.strokeStyle = 'black'
@@ -57,20 +69,21 @@ function drawCircle(x,y,radius){
     //content.stroke();
     content.fill()
 }
-function resize(){
+
+/*****************/
+function autuSetCanvasSize(canvas){
+    setCanvasSize()
+    window.onresize = function(){
+        setCanvasSize()
+}
+function setCanvasSize(){
     var pageWidth = document.documentElement.clientWidth;
     var pageHeight = document.documentElement.clientHeight;
 
     canvas.width = pageWidth
     canvas.height = pageHeight
 }
-
-var eraserEnabled = false;
-var eraser = document.getElementById('eraser')
-
-eraser.onclick = function(){
-    eraserEnabled = !eraserEnabled
-    console.log(eraserEnabled)
-    console.log('111')
-
 }
+
+
+
