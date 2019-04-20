@@ -1,6 +1,75 @@
+ol,li{list-style: none;}
+*{margin:0;padding:0}
 #canvas{display: block;background:white;position:fixed;left:0px;right:0px;}
 body{margin:0px;}
+.colors{
+    position:fixed;
+    left:10px;
+    top:70px;
+    margin:10px;
+}
+.colors>li{
+    margin:15px 0;
+    height:30px;
+    width:30px;
+    border-radius: 50%;
+    transition:all 0.4s;
+}
+.colors>li.green{
+    background-color: #40de5a;
+}
+.colors>li.green.active{
+    background-color: #40de5a;
+    height:35px;
+    width:35px;
+    border-radius: 50%;
+}
+.colors>li.red{
+    background-color: #ffb3a7;
+}
+.colors>li.red.active{
+    background-color: #ffb3a7;
+    height:35px;
+    width:35px;
+    border-radius: 50%;
+}
+.colors>li.yellow{
+    background-color: #faff72;
+}
+.colors>li.yellow.active{
+    background-color:#faff72;
+    height:35px;
+    width:35px;
+    border-radius: 50%;
+}
+.colors>li.purple{
+    background-color: #cca4e3;
+}
+.colors>li.purple.active{
+    background-color: #cca4e3;
+    height:35px;
+    width:35px;
+    border-radius: 50%;
+}
+.colors>li.blue{
+    background-color: #3eede7;
+}
+.colors>li.blue.active{
+    background-color: #3eede7;
+    height:35px;
+    width:35px;
+    border-radius: 50%;
+}
+.colors>li.black{
+    background-color: #161823;
+}
+.colors>li.black.active{
+    background-color: #161823;
+    height:35px;
+    width:35px;
+    border-radius: 50%;
+}
 .actions{position:fixed;top:0;left:0;}
-.actions > svg{width:3em;height:3em;margin:10px 15px;transition:all 0.6s;}
+.actions > svg{width:3em;height:3em;margin:10px 15px;transition:all 0.4s;}
 .actions > svg.active{width:4em;height:4em;fill:yellow;}
 .icon {width: 1em; height: 1em;vertical-align: -0.15em;fill: currentColor;overflow: hidden;}
