@@ -20,7 +20,7 @@ deleteButton.onclick = function(){
 
 }
 download.onclick = function(){
-    var url = canvas.urlDaraURL('image/png')
+    var url = canvas.toDataURL('image/png')
     var a = document.createElement('a')
     document.body.appendChild(a)
     a.href = url
