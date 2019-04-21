@@ -22,6 +22,7 @@ deleteButton.onclick = function(){
 download.onclick = function(){
     var url = canvas.urlDaraURL('image/png')
     var a = document.createElement('a')
+    document.body.appendChild(a)
     a.href = url
     a.download = '我的画'
     a.target = '_blank'
