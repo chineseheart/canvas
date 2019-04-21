@@ -1,10 +1,9 @@
 var canvas = document.getElementById('canvas');
 var content = canvas.getContext('2d');
 var eraserEnabled = true;
+var lineWidth = 6;
 
 autuSetCanvasSize(canvas)
-
-
 
 eraser.onclick = function(){
     eraserEnabled = true
@@ -16,7 +15,28 @@ pen.onclick = function(){
     pen.classList.add('active')
     eraser.classList.remove('active')
 }
+deleteButton.onclick = function(){
+    content.clearRect(0,0,canvas.width,canvas.height)
 
+}
+download.onclick = function(){
+    var url = canvas.urlDaraURL('image/png')
+    var a = document.createElement('a')
+    a.href = url
+    a.download = '我的画'
+    a.target = '_blank'
+    a.click()
+}
+thin.onclick = function(){
+    lineWidth = 6;
+    thin.classList.add('active')
+    thick.classList.remove('active')
+}
+thick.onclick = function(){
+    lineWidth = 10;
+    thick.classList.add('active')
+    thin.classList.remove('active')
+}
 red.onclick = function(){
     content.fillStyle = '#ffb3a7'
     content.strokeStyle = '#ffb3a7'
@@ -100,6 +120,7 @@ function listenToUser(canvas){
                 content.clearRect(x-7,y-7,14,14)
             }else{
                 mouse = true;
+                drawCircle(x,y,lineWidth/2)
                 lastPoint = {'x':x, 'y':y}
             }
             canvas.ontouchmove = function(aaa){
@@ -110,6 +131,7 @@ function listenToUser(canvas){
                 }else if(mouse){
                     var newPoint = {'x':undefined, 'y':undefined}
                     newPoint = {'x':x, 'y':y}
+                    drawCircle(x,y,lineWidth/2)
                     drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
                     lastPoint = newPoint;
                 }
@@ -128,6 +150,7 @@ function listenToUser(canvas){
                 content.clearRect(x-8,y-8,16,16)
             }else{
                 mouse = true;
+                drawCircle(x,y,lineWidth/2)
                 lastPoint = {'x':x, 'y':y}
             }
         }
@@ -139,6 +162,7 @@ function listenToUser(canvas){
             }else if(mouse){
                 var newPoint = {'x':undefined, 'y':undefined}
                 newPoint = {'x':x, 'y':y}
+                drawCircle(x,y,lineWidth/2)
                 drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
                 lastPoint = newPoint;
             }
@@ -153,7 +177,7 @@ function listenToUser(canvas){
 function drawLine(x1,y1,x2,y2){
     content.beginPath();
     content.moveTo(x1,y1)
-    content.lineWidth = '6'
+    content.lineWidth = lineWidth
     content.lineTo(x2,y2)
     content.stroke()
     content.closePath()
@@ -161,7 +185,6 @@ function drawLine(x1,y1,x2,y2){
 function drawCircle(x,y,radius){
     content.beginPath();
     content.arc(x,y,radius,0,Math.PI*2);
-    //content.stroke();
     content.fill()
 }
 
