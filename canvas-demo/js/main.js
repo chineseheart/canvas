@@ -18,6 +18,7 @@ pen.onclick = function(){
 deleteButton.onclick = function(){
     content.clearRect(0,0,canvas.width,canvas.height)
 
+    
 }
 download.onclick = function(){
     var url = canvas.toDataURL('image/png')

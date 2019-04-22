@@ -16,7 +16,7 @@ body{margin:0px;}
 .colors>li.blue.active{background-color: #3eede7;height:35px;width:35px;border-radius: 50%;}
 .colors>li.black{background-color: #161823;}
 .colors>li.black.active{background-color: #161823;height:35px;width:35px;border-radius: 50%;}
-.actions{position:fixed;top:0;left:0;}
+.actions{position:fixed;top:0;left:0;} 
 .actions > svg{width:3em;height:3em;margin:10px 15px;transition:all 0.4s;}
 .actions > svg.active{width:4em;height:4em;fill:yellow;}
 .thread{position:fixed;right:15px;top:90px;}
